@@ -13,7 +13,7 @@ const Confessions = async () => {
     const { data, count } = await getConfessionsByUserId(user.id);
     return (
       <main className="flex-1 p-4">
-        <div className="mb-4">
+        <div className="mb-4 flex justify-between items-center">
           <h2 className="text-xl font-semibold text-gray-800">confessions</h2>
           <span className="text-sm text-gray-500">{count} confession</span>
         </div>

@@ -5,7 +5,6 @@ export const getConfessionsByUserId = async (userId: string, page = 1 , pageSize
     const supabase = await createClient();
     const start = (page - 1) * pageSize;
     const end = start + pageSize - 1;
-    console.log(userId)
     const { data, error, count } = await supabase
         .from("confession")
         .select("*", { count: "exact" })
