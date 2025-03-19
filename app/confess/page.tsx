@@ -7,7 +7,11 @@ interface SearchParams {
   userId: string;
 }
 
-const Confess = async ({ searchParams }: { searchParams: SearchParams }) => {
+const Confess = async ({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) => {
   const { userId } = await searchParams;
   if (!userId) {
     redirect("/");
