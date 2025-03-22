@@ -1,4 +1,4 @@
-import { TablesInsert } from "@/utils/database.types";
+import { TablesInsert } from "@/utils/supabase/database.types";
 import { createClient } from "@/utils/supabase/client";
 
 /**

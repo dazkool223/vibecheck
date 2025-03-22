@@ -9,8 +9,7 @@ const Profile = async () => {
   if (!user) {
     redirect("/sign-in");
   }
-  const confessionLink = "confess.vibecheck.linkAbhi@XYZ";
-  console.log("profile", user.id);
+  const confessionLink = `${process.env.NEXT_HOST}/confess?userId=${user.id}`;
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 p-6">
@@ -23,9 +22,7 @@ const Profile = async () => {
         {/* Link Card */}
         <Card className="mb-4 bg-white">
           <CardContent className="p-4 flex items-center justify-center">
-            <p className="text-gray-700 text-center break-all">
-              {confessionLink}
-            </p>
+            <p className="text-gray-700 text-center">{confessionLink}</p>
           </CardContent>
         </Card>
 

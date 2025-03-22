@@ -1,7 +1,6 @@
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import Logo from "@/components/ui/logo";
 import Navbar from "@/components/ui/navbar";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -10,8 +9,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "VibeCheck",
+  description: "App to confess your feelings",
 };
 
 const geistSans = Geist({
