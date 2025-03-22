@@ -1,7 +1,7 @@
 const Logo = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-bold">
+    <div className="flex items-center justify-center">
+      <h1 className="text-3xl font-bold tracking-tighter">
         <span className="text-pink-500">Vibe</span>
         <span className="text-orange-500">Check</span>
       </h1>
