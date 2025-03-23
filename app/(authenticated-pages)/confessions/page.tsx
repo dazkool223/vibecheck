@@ -7,7 +7,7 @@ import { PostgrestError } from "@supabase/supabase-js";
 const Confessions = async () => {
   const user = await getUser();
   if (!user) {
-    redirect("/sign-in");
+    redirect("/login");
   }
   try {
     const { data, count } = await getConfessionsByUserId(user.id);

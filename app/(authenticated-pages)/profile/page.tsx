@@ -7,7 +7,7 @@ import CopyLinkButton from "@/components/ui/copy-button";
 const Profile = async () => {
   const user = await getUser();
   if (!user) {
-    redirect("/sign-in");
+    redirect("/login");
   }
   const confessionLink = `${process.env.NEXT_HOST}/confess?userId=${user.id}`;
 
