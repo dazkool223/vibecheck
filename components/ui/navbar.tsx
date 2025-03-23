@@ -18,7 +18,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import Logo from "@/components/ui/logo";
+import Logo from "@/components/icon/logo";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 
 type MenuItem = {
