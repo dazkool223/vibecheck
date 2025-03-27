@@ -21,7 +21,7 @@ const page = async ({
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ConfessionFormWrapper userId={influencer.data?.user_id} />
+      <ConfessionFormWrapper userId={influencer.data?.user_id || ""} />
     </Suspense>
   );
 };

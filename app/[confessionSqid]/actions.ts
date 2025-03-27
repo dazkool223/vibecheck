@@ -1,4 +1,4 @@
-import { Tables } from "@/utils/database.types";
+import { Tables } from "@/utils/supabase/database.types";
 import { createClient as createServerClient } from "@/utils/supabase/server";
 
 type GenericResponse<T> = {
@@ -46,7 +46,7 @@ export const getInfluencerBySqid = async (
     };
   }
 
-  if (!data || data.length === 0) {
+  if (!data) {
     return {
       error:
         "Link you are trying to access is invalid. Maybe ask the influencer to share the correct link!",
@@ -56,6 +56,6 @@ export const getInfluencerBySqid = async (
 
   return {
     error: null,
-    data: data[0],
+    data,
   };
 };
