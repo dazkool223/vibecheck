@@ -25,6 +25,7 @@ const ConfessionFormWrapper = ({ userId }: { userId: string }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log(userId);
     const response = await createConfession(userId, values.confessionText);
     if (response.success) {
       redirect("/confess/success");

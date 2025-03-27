@@ -14,6 +14,7 @@ const page = async ({
   }
 
   const influencer = await getInfluencerBySqid(confessionSqid);
+  console.log(influencer);
   if (influencer.error) {
     return <div>{influencer.error}</div>;
   }

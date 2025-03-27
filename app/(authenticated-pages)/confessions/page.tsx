@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { getConfessionsByUserId } from "./actions";
 import { Card, CardContent } from "@/components/ui/card";
 import { PostgrestError } from "@supabase/supabase-js";
+import { Button } from "@/components/ui/button";
+import AiSummary from "@/components/ai-summary";
 
 const Confessions = async () => {
   const user = await getUser();
@@ -11,6 +13,7 @@ const Confessions = async () => {
   }
   try {
     const { data, count } = await getConfessionsByUserId(user.id);
+
     return (
       <main className="flex-1 p-4">
         <div className="mb-4 flex justify-between items-center">
@@ -20,15 +23,18 @@ const Confessions = async () => {
         {data.length === 0 ? (
           <p>You haven't received any confessions yet.</p>
         ) : (
-          <div className="space-y-3">
-            {data.map((item, index) => (
-              <Card key={index} className="bg-white shadow-sm">
-                <CardContent className="p-4">
-                  <p className="text-gray-700">~ {item.content}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <>
+            <div className="space-y-3">
+              {data.map((item, index) => (
+                <Card key={index} className="bg-white shadow-sm">
+                  <CardContent className="p-4">
+                    <p className="text-gray-700">~ {item.content}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <AiSummary confessions={data.map((item) => item.content)} />
+          </>
         )}
       </main>
     );

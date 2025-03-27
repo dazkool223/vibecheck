@@ -10,24 +10,26 @@ import { createClient } from "@/utils/supabase/client";
  *          - `success`: A boolean indicating whether the confession was created successfully.
  *          - `error`: A string containing an error message if the operation failed, or an empty string if successful.
  */
-export const createConfession = async (userId: string, confessionText: string) => {
-    const supabase = createClient();
-    const confession: TablesInsert<'confession'> = {
-        user_id: userId,
-        content: confessionText
-    }
-    const { error } = await supabase
-        .from("confession")
-        .insert(confession);
+export const createConfession = async (
+  userId: string,
+  confessionText: string
+) => {
+  const supabase = createClient();
+  const confession: TablesInsert<"confession"> = {
+    user_id: userId,
+    content: confessionText,
+  };
+  console.log(confession);
+  const { error } = await supabase.from("confession").insert(confession);
 
-    if(error) {
-        return {
-            success: false,
-            error: "Error while creating confession"
-        };
-    }
+  if (error) {
     return {
-        success: true,
-        error: ""
-    }
-}
+      success: false,
+      error: "Error while creating confession",
+    };
+  }
+  return {
+    success: true,
+    error: "",
+  };
+};

@@ -3,13 +3,17 @@ import { Link, Share } from "lucide-react";
 import { getUser } from "@/utils/supabase/user";
 import { redirect } from "next/navigation";
 import CopyLinkButton from "@/components/ui/copy-button";
+import { getSqidForUserId } from "./actions";
 
 const Profile = async () => {
   const user = await getUser();
   if (!user) {
     redirect("/login");
   }
-  const confessionLink = `${process.env.NEXT_HOST}/confess?userId=${user.id}`;
+
+  const sqid = await getSqidForUserId(user.id);
+
+  const confessionLink = `${process.env.NEXT_HOST}/${sqid}`;
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 p-6">

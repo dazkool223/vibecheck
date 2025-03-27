@@ -2,8 +2,8 @@ import { Tables } from "@/utils/database.types";
 import { createClient as createServerClient } from "@/utils/supabase/server";
 
 type GenericResponse<T> = {
-    error: string | null;
-    data: T | null;
+  error: string | null;
+  data: T | null;
 };
 
 /**
@@ -23,38 +23,39 @@ type GenericResponse<T> = {
  * @throws This function does not throw exceptions but returns error messages in the response object.
  */
 
-
-export const getInfluencerBySqid = async (sqid: string): Promise<GenericResponse<Tables<'influencer'>>> => {
-    if (!sqid) {
-        return {
-            error: "sqid is required",
-            data: null
-        };
-    }
-
-    const supabase = await createServerClient();
-    const { data, error } = await supabase
-        .from("influencer")
-        .select("*")
-        .eq("sqid", sqid) as { data: Tables<'influencer'> | null, error: any };
-
-    if (error) {
-        return {
-            error: `Error while fetching Influencer: ${error.message}`,
-            data: null
-        };
-    }
-
-    if (!data || data.length === 0) {
-        return {
-            error: "Link you are trying to access is invalid. Maybe ask the influencer to share the correct link!",
-            data: null
-        };
-    }
-
+export const getInfluencerBySqid = async (
+  sqid: string
+): Promise<GenericResponse<Tables<"influencer">>> => {
+  if (!sqid) {
     return {
-        error: null,
-        data: data
+      error: "sqid is required",
+      data: null,
     };
-};
+  }
 
+  const supabase = await createServerClient();
+  const { data, error } = (await supabase
+    .from("influencer")
+    .select("*")
+    .eq("sqid", sqid)) as { data: Tables<"influencer"> | null; error: any };
+
+  if (error) {
+    return {
+      error: `Error while fetching Influencer: ${error.message}`,
+      data: null,
+    };
+  }
+
+  if (!data || data.length === 0) {
+    return {
+      error:
+        "Link you are trying to access is invalid. Maybe ask the influencer to share the correct link!",
+      data: null,
+    };
+  }
+
+  return {
+    error: null,
+    data: data[0],
+  };
+};
