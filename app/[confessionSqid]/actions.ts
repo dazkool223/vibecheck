@@ -1,4 +1,4 @@
-import { Tables } from "@/utils/supabase/database.types";
+import { Tables } from "@/utils/database.types";
 import { createClient as createServerClient } from "@/utils/supabase/server";
 
 type GenericResponse<T> = {

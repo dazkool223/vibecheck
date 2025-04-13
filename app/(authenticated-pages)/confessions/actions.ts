@@ -1,5 +1,5 @@
 "use server";
-import { Tables } from "@/utils/supabase/database.types";
+import { Tables } from "@/utils/database.types";
 import { createClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 

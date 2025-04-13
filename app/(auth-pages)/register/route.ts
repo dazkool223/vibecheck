@@ -1,4 +1,4 @@
-import { TablesInsert } from "@/utils/supabase/database.types";
+import { TablesInsert } from "@/utils/database.types";
 import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 import { generateSQID } from "@/utils/utils";
