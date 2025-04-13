@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import { getConfessionsByUserId } from "./actions";
 import { Card, CardContent } from "@/components/ui/card";
 import { PostgrestError } from "@supabase/supabase-js";
-import { Button } from "@/components/ui/button";
 import AiSummary from "@/components/ai-summary";
 
 const Confessions = async () => {

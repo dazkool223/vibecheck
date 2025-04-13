@@ -18,7 +18,7 @@ const CopyLinkButton = ({ content }: { content: string }) => {
   return (
     <Button
       onClick={handleCopyLink}
-      className="w-full py-6 mb-6 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-full shadow-sm"
+      className="w-full py-6 mb-6 bg-gradient-to-r from-pink-500 to-orange-400 text-white shadow-sm"
     >
       <span className="text-lg font-medium">
         {copied ? "Copied!" : "Copy link"}
