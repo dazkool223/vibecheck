@@ -23,6 +23,7 @@ const Confessions = async () => {
           <p>You haven't received any confessions yet.</p>
         ) : (
           <>
+            <AiSummary confessions={data.map((item) => item.content)} />
             <div className="space-y-3">
               {data.map((item, index) => (
                 <Card key={index} className="bg-white shadow-sm">
@@ -32,7 +33,6 @@ const Confessions = async () => {
                 </Card>
               ))}
             </div>
-            <AiSummary confessions={data.map((item) => item.content)} />
           </>
         )}
       </main>

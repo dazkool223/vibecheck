@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 export const getConfessionsByUserId = async (
   userId: string,
   page = 1,
-  pageSize = 10
+  pageSize = 100
 ) => {
   const supabase = await createClient();
   const start = (page - 1) * pageSize;
