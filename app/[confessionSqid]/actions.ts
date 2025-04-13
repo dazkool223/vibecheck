@@ -34,10 +34,10 @@ export const getInfluencerBySqid = async (
   }
 
   const supabase = await createServerClient();
-  const { data, error } = (await supabase
+  const { data, error } = await supabase
     .from("influencer")
     .select("*")
-    .eq("sqid", sqid)) as { data: Tables<"influencer"> | null; error: any };
+    .eq("sqid", sqid);
 
   if (error) {
     return {
@@ -56,6 +56,6 @@ export const getInfluencerBySqid = async (
 
   return {
     error: null,
-    data,
+    data: data[0],
   };
 };

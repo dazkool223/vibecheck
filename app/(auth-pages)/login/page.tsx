@@ -44,7 +44,7 @@ export default function Login() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <Card className="w-full max-w-md">
+        <Card className="w-full min-w-md">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-pink-500">
               <Logo />
@@ -63,7 +63,8 @@ export default function Login() {
                       <Input
                         placeholder="you@example.com"
                         type="email"
-                        {...field}
+                        value={field.value || ""}
+                        onChange={field.onChange}
                       />
                     </FormControl>
 
@@ -71,12 +72,14 @@ export default function Login() {
                   </FormItem>
                 )}
               />
-              <SubmitButton
-                pendingText="Sending Magic Link..."
-                className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:bg-gray-800 text-white"
-              >
-                Send Magic Link
-              </SubmitButton>
+              {!success && (
+                <SubmitButton
+                  pendingText="Sending Magic Link..."
+                  className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:bg-gray-800 text-white"
+                >
+                  Send Magic Link
+                </SubmitButton>
+              )}
               <p className="text-xs text-gray-500 text-center">
                 {success
                   ? `Magic link sent! Please Check your email`

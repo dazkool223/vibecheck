@@ -18,7 +18,6 @@ export async function GET(request: Request) {
     });
     if (!error) {
       // redirect user to specified redirect URL or root of app
-      console.log("verified");
       redirect(next);
     }
     console.log(error);

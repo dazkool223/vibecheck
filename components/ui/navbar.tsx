@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/icon/logo";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import SignOutButton from "../sign-out";
 
 type MenuItem = {
   title: string;
@@ -74,7 +74,7 @@ const MenuItemComponent: React.FC<{
 
   return (
     <Link
-      href={item.href}
+      href={item?.href}
       className={cn(
         `${
           !hamburger && "flex"
@@ -112,6 +112,7 @@ const MobileNavbarElements: React.FC<{ onClick: () => void }> = ({
           onClick={onClick}
         />
       ))}
+      <SignOutButton />
     </nav>
   );
 };

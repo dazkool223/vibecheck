@@ -3,28 +3,29 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
-
-
-export const signinWithMagicLink = async (email:any) => {
-  const supabase = await createClient()
+export const signinWithMagicLink = async (email: any) => {
+  const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOtp({
-    email
-  })
+    email,
+    options: {
+      emailRedirectTo: `${process.env.NEXT_HOST}/register?email=${email}`,
+    },
+  });
 
   if (error) {
-    console.log('error', error)
+    console.log("error", error);
 
     return {
       success: null,
       error: error.message,
-    }
+    };
   }
-  console.log(data)
+  console.log(data);
   return {
-    success: 'Please check your email',
+    success: "Please check your email",
     error: null,
-  }
-}
+  };
+};
 
 export const signOutAction = async () => {
   const supabase = await createClient();

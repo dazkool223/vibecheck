@@ -10,7 +10,22 @@ import { redirect } from "next/navigation";
 export function encodedRedirect(
   type: "error" | "success",
   path: string,
-  message: string,
+  message: string
 ) {
   return redirect(`${path}?${type}=${encodeURIComponent(message)}`);
+}
+
+export function generateSQID() {
+  // (omitting easily confused characters like 0/O, 1/I/l)
+  const characters =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789abcdefghijkmnopqrstuvwxyz";
+  let sqid = "";
+
+  // Generate 6 random characters from our character set
+  for (let i = 0; i < 6; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    sqid += characters.charAt(randomIndex);
+  }
+
+  return sqid;
 }
